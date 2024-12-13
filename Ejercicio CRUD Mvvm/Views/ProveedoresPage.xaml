@@ -1,0 +1,36 @@
+<ListView ItemsSource="{Binding Proveedores}" SelectionMode="None" Margin="0,10,0,0">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <StackLayout Orientation="Horizontal" Padding="10" Spacing="10">
+                    <!-- Información del proveedor -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                        <Label Text="{Binding Nombre}" FontAttributes="Bold" TextColor="White" />
+                        <Label Text="{Binding Dirección}" TextColor="Gray" />
+                        <Label Text="{Binding Teléfono}" TextColor="Gray" />
+                        <Label Text="{Binding Correo}" TextColor="Gray" />
+                    </StackLayout>
+
+                    <!-- Botones de eliminar y editar -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="5">
+                        <Button Text="Editar" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProveedorViewModel}}, Path=EditarProveedorCommand}" 
+                                CommandParameter="{Binding .}" 
+                                BackgroundColor="Blue" 
+                                TextColor="White" 
+                                WidthRequest="80" 
+                                CornerRadius="5" />
+
+                        <Button Text="Eliminar" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProveedorViewModel}}, Path=EliminarProveedorCommand}" 
+                                CommandParameter="{Binding .}" 
+                                BackgroundColor="Red" 
+                                TextColor="White" 
+                                WidthRequest="60" 
+                                CornerRadius="5" />
+                    </StackLayout>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
